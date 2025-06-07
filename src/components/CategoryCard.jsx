@@ -1,10 +1,12 @@
 import React from 'react'
-import { Wrench, Zap, HardHat, SprayCan } from 'lucide-react'; // Ensure you have these icons installed
+import { Wrench, Zap, HardHat, SprayCan,Drill } from 'lucide-react'; // Ensure you have these icons installed
+import { GiDominoTiles } from "react-icons/gi";
 import uiText from '../data/uiText.js'; // Assuming you have a JSON file for UI text    
+import { GiHandSaw } from "react-icons/gi";
 
 function CategoryCard({ category, onSelectCategory, language, darkMode }) {
     const themeColors = darkMode ? category.colors.dark : category.colors.light;
-    const iconMap = { Wrench, Zap, HardHat, SprayCan };
+    const iconMap = { Wrench, Zap,GiDominoTiles,GiHandSaw };
     const Icon = iconMap[category.categoryIcon];
 
     return (

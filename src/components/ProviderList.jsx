@@ -4,13 +4,17 @@ import { ArrowLeft, Search } from 'lucide-react';
 import ProviderCard from './ProviderCard';
 import uiText from '../data/uiText.js'; // Assuming you have a JSON file for UI text
 
-export default function ProviderList({ category, onSelectProvider, onBack, language, darkMode }){
+export default function ProviderList({ category, onSelectProvider, onBack, language, darkMode }) {
     const [searchTerm, setSearchTerm] = useState('');
     const themeColors = darkMode ? category.colors.dark : category.colors.light;
 
-    const filteredProviders = category.providers.filter(p => 
-        p.name[language].toLowerCase().includes(searchTerm.toLowerCase()) ||
-        p.description[language].toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredProviders = category.providers.filter(p =>
+        Object.values(p.name).some(n => n.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        Object.values(p.description).some((n) => n.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+    const filteredProviders1 = category.providers.filter(p =>
+        Object.values(p.name).some(n => n.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        Object.values(p.description).some(n => n.toLowerCase().includes(searchTerm.toLowerCase()))
     );
 
     return (
@@ -28,8 +32,8 @@ export default function ProviderList({ category, onSelectProvider, onBack, langu
                     value={searchTerm}
                     onChange={e => setSearchTerm(e.target.value)}
                     className={`w-full p-3 pl-10 rounded-lg border focus:ring-2 focus:outline-none lang-font transition-colors duration-300
-                        ${darkMode ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:ring-teal-400' 
-                                  : 'bg-white border-slate-300 text-slate-700 placeholder-slate-400 focus:ring-teal-500'}`}
+                        ${darkMode ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400 focus:ring-teal-400'
+                            : 'bg-white border-slate-300 text-slate-700 placeholder-slate-400 focus:ring-teal-500'}`}
                 />
                 <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 ${darkMode ? 'text-slate-400' : 'text-slate-400'}`} />
             </div>
