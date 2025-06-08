@@ -5,6 +5,7 @@ import CategoryList from './components/CategoryList';
 import ProviderList from './components/ProviderList'; 
 import ProviderDetailModal from './components/ProviderDetailModal';
 import Footer from './components/Footer';
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const [view, setView] = useState('categories'); // 'categories' or 'providers'
@@ -59,6 +60,7 @@ function App() {
       </main>
       <Footer language={language} darkMode={darkMode} />
       {selectedProvider && <ProviderDetailModal provider={selectedProvider} category={selectedCategory} onClose={handleCloseModal} language={language} darkMode={darkMode} />}
+       <Analytics /> 
     </div>
   );
 }
