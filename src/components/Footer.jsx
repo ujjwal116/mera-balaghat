@@ -1,6 +1,6 @@
 import React from 'react'
 import uiText from '../data/uiText.js'; // Assuming you have a JSON file for UI text
-function Footer ({ language, darkMode }){
+function Footer ({ language="hi", darkMode= false }) {
 
 return (
     <footer className={`py-6 mt-auto transition-colors duration-300 ${darkMode ? 'bg-slate-800 text-slate-300' : 'bg-teal-600 text-white'}`}>

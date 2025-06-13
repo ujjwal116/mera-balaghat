@@ -4,14 +4,13 @@ import { GiDominoTiles } from "react-icons/gi";
 import uiText from '../data/uiText.js'; // Assuming you have a JSON file for UI text    
 import { GiHandSaw } from "react-icons/gi";
 
-function CategoryCard({ category, onSelectCategory, language, darkMode }) {
+function CategoryCard({ category, language, darkMode }) {
     const themeColors = darkMode ? category.colors.dark : category.colors.light;
     const iconMap = { Wrench, Zap,GiDominoTiles,GiHandSaw };
     const Icon = iconMap[category.categoryIcon];
 
     return (
         <div 
-            onClick={() => onSelectCategory(category)} 
             className={`p-6 rounded-xl shadow-lg border ${themeColors.border} ${themeColors.bg} 
             transform transition-all duration-300 ${themeColors.hoverBg} 
             hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col items-center text-center h-full`}
