@@ -22,6 +22,7 @@ const uiText = {
     call: { en: "Call", hi: "फ़ोन करें" },
     message: { en: "Message", hi: "संदेश भेजें" },
     close: { en: "Close", hi: "बंद करें" },
+    whatsapp:{en: "Share on WhatsApp", hi: "व्हाट्सएप पर भेजें"}
   },
   footer: {
     copyright: { en: "All rights reserved.", hi: "सभी अधिकार सुरक्षित।" },

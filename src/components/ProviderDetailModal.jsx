@@ -65,7 +65,7 @@ export default function ProviderDetailModal({ provider, category, language }) {
                 fill="currentColor"
               />
             </svg>
-            {uiText.modal.whatsappShareButton ? uiText.modal.whatsappShareButton[language] : 'Share on WhatsApp'}
+            {uiText.modal.whatsappShareButton ? uiText.modal.whatsappShareButton[language] : uiText.modal.whatsapp[language]}
           </a>
         </div>
       </div>
