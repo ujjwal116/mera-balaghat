@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 export default function ProviderDetailModal({ provider, category, language }) {
   if (!provider) return null;
 
+  // Get the current page URL for sharing
+  const pageUrl = window.location.href;
+
   return (
     <div className="fixed inset-0 bg-opacity-75 flex items-center justify-center p-4 z-[60] backdrop-blur-sm">
       <div className='dark:bg-slate-800 dark:text-slate-100 bg-white text-slate-800 rounded-xl shadow-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto relative transition-all duration-300 scale-95 animate-modalEnter'>
@@ -45,7 +48,7 @@ export default function ProviderDetailModal({ provider, category, language }) {
             </a>
           )}
           <a
-            href={`https://wa.me/?text=${encodeURIComponent(uiText.modal.whatsappShareText ? uiText.modal.whatsappShareText[language] : 'Check out this awesome service!')}`}
+            href={`https://wa.me/?text=${encodeURIComponent(pageUrl)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 text-center font-semibold py-3 px-4 rounded-lg transition-transform transform hover:scale-105 flex items-center justify-center bg-green-500 hover:bg-green-600 text-white min-w-0"
