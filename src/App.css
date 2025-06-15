@@ -19,3 +19,6 @@
 .animate-modalEnter {
     animation: modalEnter 0.3s ease-out forwards;
 }
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));

@@ -8,9 +8,13 @@ import { useParams } from 'react-router-dom';
 import serviceData from '../data/mockData.js';
 import ProviderDetailModal from './ProviderDetailModal';
 import { useEffect } from 'react';
+import { useTheme } from '../context/theme.js';
+import { useLanguage } from '../context/language.js';
 
 
-export default function ProviderList({ language='hi', darkMode=false}) {
+export default function ProviderList() {
+    const {language} = useLanguage();
+    const { darkMode } = useTheme();
     const { categoryId, providerId } = useParams();
     const [selectedProvider, setSelectedProvider] = useState(null);
     const category = serviceData.find(cat => String(cat.id) === String(categoryId));
@@ -24,13 +28,12 @@ export default function ProviderList({ language='hi', darkMode=false}) {
     }, [providerId, category]);
 
     const [searchTerm, setSearchTerm] = useState('');
-    const themeColors = darkMode ? category.colors.dark : category.colors.light;
+    const themeColors = category.colors;
 
     const filteredProviders = category.providers.filter(p =>
         Object.values(p.name).some(n => n.toLowerCase().includes(searchTerm.toLowerCase())) ||
         Object.values(p.description).some((n) => n.toLowerCase().includes(searchTerm.toLowerCase()))
     );
-
     return (
         <div className='flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12'>
             <div>
@@ -55,7 +58,7 @@ export default function ProviderList({ language='hi', darkMode=false}) {
 
             {filteredProviders.length > 0 ? (
                 <div className="space-y-4 ">
-                    {category.providers.map(p => (
+                    {filteredProviders.map(p => (
                         <ProviderCard key={p.id} provider={p} categoryId={categoryId} handleSelectProvider={setSelectedProvider} language={language} darkMode={darkMode} themeColors={themeColors} />
                     ))}
                 </div>
